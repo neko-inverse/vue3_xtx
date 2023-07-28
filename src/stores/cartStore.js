@@ -2,7 +2,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-export const userCartStore = defineStore('cart', () => {
+export const useCartStore = defineStore('cart', () => {
   const cartList = ref([])
   const addCart = (goods) => {
     const item = cartList.value.find((item) => goods.skuId === item.skuId)

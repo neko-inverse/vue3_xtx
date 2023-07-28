@@ -4,9 +4,9 @@ import { getDetail } from '@/apis/detail'
 import { ElMessage } from 'element-plus';
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { userCartStore } from '@/stores/cartStore'
+import { useCartStore } from '@/stores/cartStore'
 
-const cartStore = userCartStore()
+const cartStore = useCartStore()
 const goods = ref({})
 const route = useRoute()
 const getGoods = async () => {
