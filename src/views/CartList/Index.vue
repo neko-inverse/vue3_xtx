@@ -2,10 +2,13 @@
 import { useCartStore } from '@/stores/cartStore'
 
 const cartStore = useCartStore()
-const cartList = []
 
 const singleCheck = (i, selected) => {
   cartStore.singleCheck(i.skuId, selected)
+}
+
+const allCheck = (selected) => {
+  cartStore.allCheck(selected)
 }
 </script>
 
@@ -17,7 +20,7 @@ const singleCheck = (i, selected) => {
           <thead>
             <tr>
               <th width="120">
-                <el-checkbox />
+                <el-checkbox :model-value="cartStore.isAll" @change="allCheck" />
               </th>
               <th width="400">商品信息</th>
               <th width="220">单价</th>
@@ -61,7 +64,7 @@ const singleCheck = (i, selected) => {
                 </p>
               </td>
             </tr>
-            <tr v-if="cartList.length === 0">
+            <tr v-if="cartStore.cartList.length === 0">
               <td colspan="6">
                 <div class="cart-none">
                   <el-empty description="购物车列表为空">
