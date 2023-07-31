@@ -35,6 +35,19 @@ const pageChange = (page) => {
   params.value.page = page
   getOrderList()
 }
+
+// 创建格式化函数
+const fomartPayState = (payState) => {
+  const stateMap = {
+    1: '待付款',
+    2: '待发货',
+    3: '待收货',
+    4: '待评价',
+    5: '已完成',
+    6: '已取消'
+  }
+  return stateMap[payState]
+}
 </script>
 
 <template>
@@ -80,7 +93,7 @@ const pageChange = (page) => {
                 </ul>
               </div>
               <div class="column state">
-                <p>{{ order.orderState }}</p>
+                <p>{{ fomartPayState(order.orderState) }}</p>
                 <p v-if="order.orderState === 3">
                   <a href="javascript:;" class="green">查看物流</a>
                 </p>
